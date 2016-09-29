@@ -71,9 +71,8 @@ public class GoDao implements DAO<Go>{
 	public float queryAvg(int id) {
 		
 		try {
-			sql=con.prepareStatement("select avg(score) avg from t_game_go where user_id=? and createTimeDate=? group by createTimeDate");
+			sql=con.prepareStatement("select avg(score) avg from t_game_go where user_id=? and createTimeDate=DATE_FORMAT(NOW(),'%Y-%c-%d') group by createTimeDate");
 			sql.setInt(1, id);
-			sql.setDate(2, (java.sql.Date) new Date());
 			rs=sql.executeQuery();
 			if(rs.next()){
 				return rs.getFloat("avg");

@@ -62,9 +62,8 @@ public class MahjongDao implements DAO<Mahjong> {
 	@Override
 	public float queryAvg(int id) {
 		try {
-			sql=con.prepareStatement("select avg(score) avg from t_game_mahjong where user_id=? and createTimeDate=? group by createTimeDate");
+			sql=con.prepareStatement("select avg(score) avg from t_game_mahjong where user_id=? and createTimeDate=DATE_FORMAT(NOW(),'%Y-%c-%d') group by createTimeDate");
 			sql.setInt(1, id);
-			sql.setDate(2, (java.sql.Date) new Date());
 			rs=sql.executeQuery();
 			if(rs.next()){
 				return rs.getFloat("avg");
@@ -74,7 +73,6 @@ public class MahjongDao implements DAO<Mahjong> {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
 		return 0;
 	}
 

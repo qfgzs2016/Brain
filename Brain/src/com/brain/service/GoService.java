@@ -7,10 +7,8 @@ import com.brain.Pojo.Go;
 
 public class GoService {
 	GoDao goDao = new GoDao();
-	
 
 	public boolean saveGoScore(Go go) {
-		System.out.println("围棋"+goDao.Insert(go));
 		if(goDao.Insert(go)){
 			return true;
 		}

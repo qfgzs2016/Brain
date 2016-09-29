@@ -7,9 +7,11 @@ import org.junit.Test;
 
 import com.brain.Pojo.Go;
 import com.brain.Pojo.Mahjong;
+import com.brain.Pojo.MathMatch;
 import com.brain.Pojo.User;
 import com.brain.service.GoService;
 import com.brain.service.MahjongService;
+import com.brain.service.MathMatchService;
 import com.brain.service.UserService;
 import com.brain.util.UtilJDBC;
 
@@ -41,6 +43,7 @@ public class test {
 		go.setScore(600);
 		GoService goService = new GoService();
 		System.out.println(goService.saveGoScore(go));
+		System.out.println(goService.getAvg(3));
 	}
 	@Test
 	public void testMa(){
@@ -51,5 +54,15 @@ public class test {
 		mahjong.setId(1);
 		mahjong.setScore(300);
 		System.out.println(mahjongService.saveMahjongScore(mahjong));
+	}
+	
+	@Test
+	public void testMath(){
+		MathMatch mathMatch = new MathMatch();
+		MathMatchService mathMatchService = new MathMatchService();
+		mathMatch.setId(7);
+		mathMatch.setScore(800);
+		System.out.println(mathMatchService.saveMathMatchScore(mathMatch));
+		System.out.println(mathMatchService.getAvg(7));
 	}
 }

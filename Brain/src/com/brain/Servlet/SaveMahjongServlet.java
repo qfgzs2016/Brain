@@ -42,7 +42,7 @@ public class SaveMahjongServlet extends HttpServlet {
 	/**
 	 *
 	 * 说明
-	 * 保存围棋游戏数据返回今日平均
+	 * 保存麻将游戏数据返回今日平均
 	 * 返回中code属性1为正确0为错误,avg属性为返回的用户当天平均分
 	 * 
 	 * @param request the request send by the client to the server
