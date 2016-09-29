@@ -7,6 +7,15 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import net.sf.json.JSONObject;
+
+import com.brain.Pojo.Go;
+import com.brain.Pojo.Mahjong;
+import com.brain.Pojo.User;
+import com.brain.service.GoService;
+import com.brain.service.MahjongService;
 
 public class SaveMahjongServlet extends HttpServlet {
 
@@ -25,38 +34,16 @@ public class SaveMahjongServlet extends HttpServlet {
 		// Put your code here
 	}
 
-	/**
-	 * The doGet method of the servlet. <br>
-	 *
-	 * This method is called when a form has its tag value method equals to get.
-	 * 
-	 * @param request the request send by the client to the server
-	 * @param response the response send by the server to the client
-	 * @throws ServletException if an error occurred
-	 * @throws IOException if an error occurred
-	 */
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
-		response.setContentType("text/html");
-		PrintWriter out = response.getWriter();
-		out.println("<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01 Transitional//EN\">");
-		out.println("<HTML>");
-		out.println("  <HEAD><TITLE>A Servlet</TITLE></HEAD>");
-		out.println("  <BODY>");
-		out.print("    This is ");
-		out.print(this.getClass());
-		out.println(", using the GET method");
-		out.println("  </BODY>");
-		out.println("</HTML>");
-		out.flush();
-		out.close();
+			doPost(request, response);
 	}
 
 	/**
-	 * The doPost method of the servlet. <br>
 	 *
-	 * This method is called when a form has its tag value method equals to post.
+	 * 说明
+	 * 保存围棋游戏数据返回今日平均
+	 * 返回中code属性1为正确0为错误,avg属性为返回的用户当天平均分
 	 * 
 	 * @param request the request send by the client to the server
 	 * @param response the response send by the server to the client
@@ -65,20 +52,24 @@ public class SaveMahjongServlet extends HttpServlet {
 	 */
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
-		response.setContentType("text/html");
+		JSONObject jb = new JSONObject();
+		int score = Integer.parseInt(request.getParameter("score"));
+		Mahjong mahjong = new Mahjong();
+		HttpSession session = request.getSession();
+		User user = (User)session.getAttribute("loginuser");
+		mahjong.setId(user.getId());
+		mahjong.setScore(score);
+		MahjongService mahjongService = new MahjongService();
+		if(mahjongService.saveMahjongScore(mahjong)){
+			jb.put("avg", mahjongService.getAvg(user.getId()));
+			jb.put("code", 1);
+		}else{
+			jb.put("code", 0);
+		}
 		PrintWriter out = response.getWriter();
-		out.println("<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01 Transitional//EN\">");
-		out.println("<HTML>");
-		out.println("  <HEAD><TITLE>A Servlet</TITLE></HEAD>");
-		out.println("  <BODY>");
-		out.print("    This is ");
-		out.print(this.getClass());
-		out.println(", using the POST method");
-		out.println("  </BODY>");
-		out.println("</HTML>");
-		out.flush();
+		out.print(jb);
 		out.close();
+		
 	}
 
 	/**

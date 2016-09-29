@@ -6,8 +6,10 @@ import java.util.ArrayList;
 import org.junit.Test;
 
 import com.brain.Pojo.Go;
+import com.brain.Pojo.Mahjong;
 import com.brain.Pojo.User;
 import com.brain.service.GoService;
+import com.brain.service.MahjongService;
 import com.brain.service.UserService;
 import com.brain.util.UtilJDBC;
 
@@ -39,5 +41,15 @@ public class test {
 		go.setScore(600);
 		GoService goService = new GoService();
 		System.out.println(goService.saveGoScore(go));
+	}
+	@Test
+	public void testMa(){
+		Mahjong mahjong = new Mahjong();
+		
+		MahjongService mahjongService = new MahjongService();
+		
+		mahjong.setId(1);
+		mahjong.setScore(300);
+		System.out.println(mahjongService.saveMahjongScore(mahjong));
 	}
 }

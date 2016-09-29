@@ -9,8 +9,7 @@ public class MahjongService {
 	MahjongDao mahjongDao = new MahjongDao();
 	
 
-	public boolean saveGoScore(Mahjong mahjong) {
-		System.out.println("围棋"+mahjongDao.Insert(mahjong));
+	public boolean saveMahjongScore(Mahjong mahjong) {
 		if(mahjongDao.Insert(mahjong)){
 			return true;
 		}
