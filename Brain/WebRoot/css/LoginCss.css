@@ -1,0 +1,116 @@
+@charset "utf-8";
+/* CSS Document */
+
+*{
+	margin:0;
+	padding:0;
+}
+a{
+	color:#000;
+}
+
+/*************************设置背景颜色*****************************/
+
+body{
+/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#7c7a49+0,57822d+100 */
+background: rgb(124,122,73); /* Old browsers */
+background: -moz-linear-gradient(45deg,  rgba(124,122,73,1) 0%, rgba(87,130,45,1) 100%); /* FF3.6-15 */
+background: -webkit-linear-gradient(45deg,  rgba(124,122,73,1) 0%,rgba(87,130,45,1) 100%); /* Chrome10-25,Safari5.1-6 */
+background: linear-gradient(45deg,  rgba(124,122,73,1) 0%,rgba(87,130,45,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#7c7a49', endColorstr='#57822d',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+
+}
+
+/****************************************主要内容****************/
+
+#main{
+	width:400px;
+	height:390px;
+	margin:auto auto;
+	background-color:rgba(256,256,256,0.15);
+	text-align:center;/*****内容居中*/
+	position:relative;
+	top:100px;
+}
+/****************头像*******/
+#header{
+	padding-top:40px;
+		text-align:center;
+}
+	
+#text{
+	margin-top:20px;
+	color:#009;
+	font-size:9px;
+}
+
+/*****************操作区域*****************/		
+#content{
+	margin-top:10px;
+}	
+/************include的div块**********/
+.include{
+	margin:10px auto 5px auto;
+	height:50px;
+	margin-right:50px;
+}
+
+.flag{
+	display:inline-block;
+	width:70px;
+	color:#FFF;
+	text-align:right;
+}
+
+.include input{
+	height:25px;
+	width:200px;
+	margin-left:5px;
+	text-indent:5px;
+}
+
+.warning{
+	font-size:9px;
+	position:relative;
+	left:30px;
+	margin-top:8px;
+}
+
+
+#register{
+	height:35px;
+	width:80px;
+	font-family:微软雅黑;
+	background:#39F;
+	box-shadow:none;
+	border-radius:3px;
+	border:#9C3;
+	color:#FFF;
+	margin-top:10px;
+}
+#register:hover{
+	cursor:pointer;
+}
+
+#back{
+	margin-top:20px;
+	margin-bottom:25px;
+}
+#back a{
+	font-size:11px;
+	font-family:微软雅黑;
+	text-decoration:none;
+	text-align:right;
+}
+
+#back a:hover{
+	color:#F90;
+}
+#login{
+	padding:5px 10px;
+	font-family:微软雅黑;
+	background:#39F;
+	border-radius:5px;
+	border:#9C3;
+	color:#FFF;
+}

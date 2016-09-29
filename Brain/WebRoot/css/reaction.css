@@ -1,0 +1,8 @@
+@charset "utf-8";
+/* CSS Document */
+#reaction_canvas{
+	border:1px solid #000;
+	background:#0F6;
+	border-radius:6%;
+}
+
